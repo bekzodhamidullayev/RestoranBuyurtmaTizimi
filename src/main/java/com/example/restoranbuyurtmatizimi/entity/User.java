@@ -1,6 +1,7 @@
 package com.example.restoranbuyurtmatizimi.entity;
 
 import com.example.restoranbuyurtmatizimi.enums.Role;
+import com.example.restoranbuyurtmatizimi.enums.UserStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,9 +23,6 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
     @Column(nullable = false)
     @JsonIgnore
     private String password;
@@ -33,7 +31,14 @@ public class User extends BaseEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
+    private Integer visit;
+
     private boolean blocked;
+
 
 
     @Override
